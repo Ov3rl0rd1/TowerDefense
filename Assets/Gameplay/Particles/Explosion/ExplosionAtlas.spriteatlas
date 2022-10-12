@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ExplosionAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 512
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: 89fc039e90ba72a43b085a54cf7d6f56, type: 3}
+    - {fileID: 21300000, guid: 9e3b58c74714c1b45a1bc00e0055196d, type: 3}
+    - {fileID: 21300000, guid: 275ac64d1e3cae742977fa7c9251130b, type: 3}
+    - {fileID: 21300000, guid: a9185083c4659d44cb306af73f940892, type: 3}
+    - {fileID: 21300000, guid: 5a028ca5c7d36dd4c813e8b87aaa7892, type: 3}
+    - {fileID: 21300000, guid: 0b3d173ead8cde84591e0e5e1e3b4aaa, type: 3}
+    - {fileID: 21300000, guid: 6a566c26c40bdec45af7d4355a729fb2, type: 3}
+    - {fileID: 21300000, guid: 3bec43054d5a8f44ea0d676ca1408ea6, type: 3}
+    - {fileID: 21300000, guid: 766ac1439ac931148a9fc61c273c5c19, type: 3}
+    - {fileID: 21300000, guid: 022874a8f5147964c8abd00698d7e7ab, type: 3}
+    - {fileID: 21300000, guid: 27fe1ac3399f1f843b24552223b9c8e4, type: 3}
+    - {fileID: 21300000, guid: 833fa656c51ef1c419ebbb5510d892b0, type: 3}
+    - {fileID: 21300000, guid: d34554c940a459744b35f7f6a897bc3b, type: 3}
+    - {fileID: 21300000, guid: 4bc45b61b929e2a4ca2f932101efda7d, type: 3}
+    - {fileID: 21300000, guid: f33dfca662789474e9efe2ce445bd5e8, type: 3}
+    - {fileID: 21300000, guid: 5696450e62d59394fa725ab9246de4b2, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4bc45b61b929e2a4ca2f932101efda7d, type: 3}
+  - {fileID: 21300000, guid: 766ac1439ac931148a9fc61c273c5c19, type: 3}
+  - {fileID: 21300000, guid: a9185083c4659d44cb306af73f940892, type: 3}
+  - {fileID: 21300000, guid: 27fe1ac3399f1f843b24552223b9c8e4, type: 3}
+  - {fileID: 21300000, guid: 3bec43054d5a8f44ea0d676ca1408ea6, type: 3}
+  - {fileID: 21300000, guid: 5a028ca5c7d36dd4c813e8b87aaa7892, type: 3}
+  - {fileID: 21300000, guid: 6a566c26c40bdec45af7d4355a729fb2, type: 3}
+  - {fileID: 21300000, guid: 833fa656c51ef1c419ebbb5510d892b0, type: 3}
+  - {fileID: 21300000, guid: f33dfca662789474e9efe2ce445bd5e8, type: 3}
+  - {fileID: 21300000, guid: 9e3b58c74714c1b45a1bc00e0055196d, type: 3}
+  - {fileID: 21300000, guid: 022874a8f5147964c8abd00698d7e7ab, type: 3}
+  - {fileID: 21300000, guid: d34554c940a459744b35f7f6a897bc3b, type: 3}
+  - {fileID: 21300000, guid: 275ac64d1e3cae742977fa7c9251130b, type: 3}
+  - {fileID: 21300000, guid: 5696450e62d59394fa725ab9246de4b2, type: 3}
+  - {fileID: 21300000, guid: 0b3d173ead8cde84591e0e5e1e3b4aaa, type: 3}
+  - {fileID: 21300000, guid: 89fc039e90ba72a43b085a54cf7d6f56, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - explosion_13
+  - explosion_8
+  - explosion_3
+  - explosion_10
+  - explosion_7
+  - explosion_4
+  - explosion_6
+  - explosion_11
+  - explosion_14
+  - explosion_1
+  - explosion_9
+  - explosion_12
+  - explosion_2
+  - explosion_15
+  - explosion_5
+  - explosion_0
+  m_RenderDataMap: {}
+  m_Tag: ExplosionAtlas
+  m_IsVariant: 0

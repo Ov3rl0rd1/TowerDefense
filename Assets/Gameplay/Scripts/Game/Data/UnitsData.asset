@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e411fc4548b731f4788c5ee73f944107, type: 3}
+  m_Name: UnitsData
+  m_EditorClassIdentifier: 
+  _unitsPrefab:
+  - Unit: {fileID: 862865288132705765, guid: d24ff2522196fef47b3d69b6e0e9afec, type: 3}
+    IsLocked: 0
+    EXPCost: 0
+  - Unit: {fileID: 862865288132705765, guid: 5f304116a112de146be76c05a0751754, type: 3}
+    IsLocked: 1
+    EXPCost: 50
+  - Unit: {fileID: 862865288132705765, guid: b4803193625727947a3f320486f1260f, type: 3}
+    IsLocked: 1
+    EXPCost: 150
+  - Unit: {fileID: 862865288132705765, guid: 2cf61df9647af4a468346272ce017828, type: 3}
+    IsLocked: 1
+    EXPCost: 250
+  - Unit: {fileID: 862865288132705765, guid: da7f2f5539727364c8ba05d5d550c303, type: 3}
+    IsLocked: 1
+    EXPCost: 500
+  - Unit: {fileID: 862865288132705765, guid: 87d326ce3f3e60e41a0bac6c6ca9c4f3, type: 3}
+    IsLocked: 1
+    EXPCost: 500
+  - Unit: {fileID: 862865288132705765, guid: 12a295d0937105d42ab2873dfd0fbb5d, type: 3}
+    IsLocked: 1
+    EXPCost: 750
