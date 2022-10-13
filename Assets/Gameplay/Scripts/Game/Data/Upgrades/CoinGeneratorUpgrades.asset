@@ -10,7 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cda38ee66e3482b42928be52eb60c3a4, type: 3}
-  m_Name: CoinGeneratorLevel4
+  m_Name: CoinGeneratorUpgrades
   m_EditorClassIdentifier: 
-  _cost: 750
-  _multiplier: 2
+  _upgradeUI: {fileID: 8437589832074426561, guid: 51631b0a0c2d9dc4ba6b9bf106347374, type: 3}
+  _balanceUpgrades:
+  - EXPCost: 100
+    Multiplier: 2
+  - EXPCost: 300
+    Multiplier: 1.5
+  - EXPCost: 1000
+    Multiplier: 2

@@ -1,21 +1,57 @@
 using UnityEngine;
 using Unity.Netcode;
 using Zenject;
+using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 
 public class UnitSpawner : NetworkBehaviour
 {
+    public bool CanSendUnits => _delayCoroutine == null;
+    public float SpawnDelay => _spawnDelay;
+    public int MaxUnitsCount => _maxUnitsCount;
+
     [SerializeField] private Transform _firstSpawner;
     [SerializeField] private Transform _secondSpawner;
     [SerializeField] private Gates _firstGates;
     [SerializeField] private Gates _secondGates;
+    [SerializeField] private int _maxUnitsCount;
+    [SerializeField] private float _spawnDelay;
 
     [Inject] private PlayerBalance _playerBalance;
     [Inject] private Units _unitsData;
     [Inject] private Team _team;
 
-    public void Send(int unitIndex)
+    private IEnumerator _delayCoroutine;
+
+    public void Send(Dictionary<int, int> units)
     {
-        SendUnitServerRpc(_team, NetworkManager.LocalClientId, unitIndex);
+        if (units.Values.Sum() > _maxUnitsCount)
+            throw new System.InvalidOperationException();
+
+        foreach (var unit in units)
+        {
+            for(int i = 0; i < unit.Value; i++)
+                SendUnitServerRpc(_team, NetworkManager.LocalClientId, unit.Key);
+        }
+
+        _delayCoroutine = Delay();
+        StartCoroutine(_delayCoroutine);
+    }
+
+    public void SetMaxUnits(int count)
+    {
+        if (count <= 0)
+            throw new System.ArgumentOutOfRangeException(nameof(count));
+
+        _maxUnitsCount = count;
+    }
+    public void SetSpawnDelay(float time)
+    {
+        if (time < 0)
+            throw new System.ArgumentOutOfRangeException(nameof(time));
+
+        _spawnDelay = time;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -43,5 +79,12 @@ public class UnitSpawner : NetworkBehaviour
     private Gates GetGates(Team team)
     {
         return team == Team.First ? _secondGates : _firstGates;
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(_spawnDelay);
+
+        _delayCoroutine = null;
     }
 }

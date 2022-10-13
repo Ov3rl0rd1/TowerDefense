@@ -75,7 +75,6 @@ public class GameStateSwitcher : NetworkBehaviour
         _currentState.OnTimerEnd.AddListener(ReturnToLobby);
 
         OnGameFinished?.Invoke(winnerTeam);
-
     }
 
     private void ReturnToLobby()
@@ -88,7 +87,8 @@ public class GameStateSwitcher : NetworkBehaviour
 
     private void SetState(int index)
     {
-        CurrentGameState.Value = index;
+        if(IsHost)
+            CurrentGameState.Value = index;
 
         _currentState = _states[index];
         _currentState.StartState();

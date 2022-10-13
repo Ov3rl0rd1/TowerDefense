@@ -534,7 +534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Coin generator
+  m_text: Units send delay
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8715a13a2641677458b3766a3075bf77, type: 2}
   m_sharedMaterial: {fileID: 7305041788007504400, guid: 8715a13a2641677458b3766a3075bf77, type: 2}
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 8437589832074426561}
   - component: {fileID: 8437589832074426572}
   m_Layer: 5
-  m_Name: PlayerBalanceUpgradeUi
+  m_Name: UnitSendDelayUpgradeUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

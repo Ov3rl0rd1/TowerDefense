@@ -18,7 +18,7 @@ RenderSettings:
   m_FogColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.17
-  m_LinearFogStart: 5
+  m_LinearFogStart: 6
   m_LinearFogEnd: 15
   m_AmbientSkyColor: {r: 0.3764706, g: 0.3764706, b: 0.3764706, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
@@ -972,11 +972,11 @@ RectTransform:
   m_Children:
   - {fileID: 1285495424}
   m_Father: {fileID: 1214860331}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: 17}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132284814
@@ -3360,6 +3360,8 @@ MonoBehaviour:
   _secondSpawner: {fileID: 642098725}
   _firstGates: {fileID: 277324011}
   _secondGates: {fileID: 1882456299}
+  _maxUnitsCount: 12
+  _spawnDelay: 15
 --- !u!1 &398980361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3391,11 +3393,11 @@ RectTransform:
   m_Children:
   - {fileID: 1684320244}
   m_Father: {fileID: 1214860331}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: -18}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &398980363
@@ -4440,13 +4442,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3928802704ae0ee4fb2a2ec348b0e785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerBalanceUpgrades:
+  _upgradesVisitor: {fileID: 1327639102}
+  _upgrades:
   - {fileID: 11400000, guid: be1c234b9a17c0b4fbc35d13d86e147e, type: 2}
-  - {fileID: 11400000, guid: cd45b53b9f1192e4b9ad8808f77900e8, type: 2}
-  - {fileID: 11400000, guid: dcbbc6403b0dc444bb2f1291234db02d, type: 2}
+  - {fileID: 11400000, guid: 82bbd19088941da468a9c0deefcd4620, type: 2}
+  - {fileID: 11400000, guid: c1352eefed6f8ea4da02d706de2f513c, type: 2}
   _upgradesMenu: {fileID: 1661478548}
   _upgradesContent: {fileID: 359832512}
-  _balanceUpgradeVisualElement: {fileID: 8437589832074426561, guid: 5ecb12fc35a8f774f890b74a969b3733, type: 3}
 --- !u!1001 &518739064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6821,9 +6823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Send
-
-'
+  m_text: Send
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8715a13a2641677458b3766a3075bf77, type: 2}
   m_sharedMaterial: {fileID: 7305041788007504400, guid: 8715a13a2641677458b3766a3075bf77, type: 2}
@@ -7368,9 +7368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbce6b9ce41a4545be3c2596616eb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxUnitsCount: 12
-  _spawnDelay: 15
   _sendMenu: {fileID: 1937489747}
+  _sendButton: {fileID: 1884765655}
+  _sendButtonText: {fileID: 764596635}
   _unitsContent: {fileID: 1096544961}
   _unitPrefab: {fileID: 4577631681325595330, guid: 34ae8ebf0b41b2944b7dc47f9133a223, type: 3}
   _totalCostText: {fileID: 2107549102}
@@ -10255,8 +10255,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 398980362}
   - {fileID: 132284813}
+  - {fileID: 398980362}
   m_Father: {fileID: 16331908}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11116,6 +11116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1327639100}
+  - component: {fileID: 1327639102}
   - component: {fileID: 1327639101}
   m_Layer: 0
   m_Name: Player
@@ -11155,6 +11156,18 @@ MonoBehaviour:
   _startCoins: 750
   _baseCoinGenerationCount: 5
   _baseCoinGeneratorSpeed: 2
+--- !u!114 &1327639102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327639099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4330f11dac5fd48b7cc1666e0b1189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1341850384
 GameObject:
   m_ObjectHideFlags: 0
@@ -13669,7 +13682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3137255, g: 0.7725491, b: 0.3921569, a: 1}
+  m_Color: {r: 0.01015234, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15068,7 +15081,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game starts in:'
+  m_text: 'Geme starts in:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8715a13a2641677458b3766a3075bf77, type: 2}
   m_sharedMaterial: {fileID: 7305041788007504400, guid: 8715a13a2641677458b3766a3075bf77, type: 2}
@@ -15096,10 +15109,10 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 33.85
-  m_fontSizeBase: 32
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 30
+  m_fontSizeMin: 26
   m_fontSizeMax: 38
   m_fontStyle: 0
   m_HorizontalAlignment: 4
@@ -15111,7 +15124,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -15484,7 +15497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880924926
@@ -15717,7 +15730,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.59599996, g: 0.59599996, b: 0.59599996, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

@@ -49,6 +49,7 @@ public class GameNetworking : MonoBehaviour
             throw new System.InvalidOperationException("Player isn't in the game");
 
         _isInGame = false;
+        NetworkManager.Singleton.Shutdown();
         Destroy(NetworkManager.Singleton.gameObject);
         SceneManager.LoadScene(_setupScene);
     }

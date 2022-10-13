@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d407f271b094f894e8c6cd85d569c5c7, type: 3}
+  m_Name: MaxUnitsCountUpgrade
+  m_EditorClassIdentifier: 
+  _upgradeUI: {fileID: 8437589832074426561, guid: 5ecb12fc35a8f774f890b74a969b3733, type: 3}
+  _maxCountUpgrades:
+  - EXPCost: 200
+    MaxCount: 14
+  - EXPCost: 500
+    MaxCount: 16
+  - EXPCost: 750
+    MaxCount: 18
+  - EXPCost: 1000
+    MaxCount: 22

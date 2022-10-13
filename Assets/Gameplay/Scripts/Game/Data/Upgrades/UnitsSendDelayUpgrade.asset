@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d34f78e88bdf234a8fc5a1cd3885e83, type: 3}
+  m_Name: UnitsSendDelayUpgrade
+  m_EditorClassIdentifier: 
+  _upgradeUI: {fileID: 8437589832074426561, guid: 7a3054e4b89f0bc458c19852e64e0811, type: 3}
+  _sendDelayUpgrades:
+  - EXPCost: 150
+    Delay: 12
+  - EXPCost: 300
+    Delay: 10
+  - EXPCost: 800
+    Delay: 6

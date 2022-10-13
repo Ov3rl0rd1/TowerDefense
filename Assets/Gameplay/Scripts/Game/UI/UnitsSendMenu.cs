@@ -4,17 +4,18 @@ using UnityEngine;
 using TMPro;
 using Zenject;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UnitsSendMenu : BaseMenu
 {
-    public int MaxUnitsCount => _maxUnitsCount;
+    public int MaxUnitsCount => _unitsSpawner.MaxUnitsCount;
     public int SelectedUnitsCount => _selectedUnitsId.Select(x => x.Value).Sum();
 
     public override bool IsActive => _sendMenu.activeSelf;
 
-    [SerializeField] private int _maxUnitsCount;
-    [SerializeField] private float _spawnDelay;
     [SerializeField] private GameObject _sendMenu;
+    [SerializeField] private Button _sendButton;
+    [SerializeField] private TextMeshProUGUI _sendButtonText;
     [SerializeField] private Transform _unitsContent;
     [SerializeField] UnitVisualElement _unitPrefab;
     [SerializeField] TextMeshProUGUI _totalCostText;
@@ -26,11 +27,12 @@ public class UnitsSendMenu : BaseMenu
     [Inject] private MenuManager _menuManager;
 
     private Dictionary<Units.Data, int> _selectedUnitsId = new Dictionary<Units.Data, int>();
-    private IEnumerator _delayCoroutine;
+    private string _defaultSendText;
     private int _totalCost;
 
     private void Start()
     {
+        _defaultSendText = _sendButtonText.text;
         for (int i = 0; i < _unitsData.Count; i++)
         {
             UnitVisualElement unitUI = Instantiate(_unitPrefab, _unitsContent);
@@ -41,7 +43,7 @@ public class UnitsSendMenu : BaseMenu
 
     public void TrySend()
     {
-        if (_delayCoroutine != null || _gameStateSwitcher.CurrentState.CanSendUnits == false)
+        if (_gameStateSwitcher.CurrentState.CanSendUnits == false)
             return;
 
         int totalCost = 0;
@@ -55,16 +57,13 @@ public class UnitsSendMenu : BaseMenu
 
         _playerBalance.ReduceCoins(totalCost);
 
+        Dictionary<int, int> units = new Dictionary<int, int>();
+
         foreach (var e in _selectedUnitsId)
-        {
-            int index = _unitsData.IndexOf(e.Key);
+            units.Add(_unitsData.IndexOf(e.Key), e.Value);
+        _unitsSpawner.Send(units);
 
-            for (int i = 0; i < e.Value; i++)
-                _unitsSpawner.Send(index);
-        }
-
-        _delayCoroutine = Delay();
-        StartCoroutine(_delayCoroutine);
+        StartCoroutine(Delay(_unitsSpawner.SpawnDelay));
     }
 
     public bool TryUnlock(Units.Data unit)
@@ -107,10 +106,17 @@ public class UnitsSendMenu : BaseMenu
         _totalCostText.text = _totalCost.ToString();
     }
 
-    private IEnumerator Delay()
+    private IEnumerator Delay(float time)
     {
-        yield return new WaitForSeconds(_spawnDelay);
+        _sendButton.interactable = false;
 
-        _delayCoroutine = null;
+        for (int i = 0; i < time; i++)
+        {
+            _sendButtonText.text = _defaultSendText + $"({(int)time - i})";
+            yield return new WaitForSeconds(1);
+        }
+
+        _sendButtonText.text = _defaultSendText;
+        _sendButton.interactable = true;
     }
 }

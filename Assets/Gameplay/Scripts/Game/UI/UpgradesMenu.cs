@@ -4,14 +4,13 @@ using Zenject;
 
 public class UpgradesMenu : BaseMenu
 {
-    public IReadOnlyList<PlayerBalanceUpgrade> Upgrades => _playerBalanceUpgrades;
+    public IReadOnlyList<BaseUpgrade> Upgrades => _upgrades;
 
-    [SerializeField] private List<PlayerBalanceUpgrade> _playerBalanceUpgrades;
+    [SerializeField] private UpgradesVisitor _upgradesVisitor;
+    [SerializeField] private List<BaseUpgrade> _upgrades;
     [SerializeField] private GameObject _upgradesMenu;
     [SerializeField] private Transform _upgradesContent;
-    [SerializeField] private BalanceUpgradeVisualElement _balanceUpgradeVisualElement;
 
-    [Inject] private PlayerBalance _playerBalance;
     [Inject] private MenuManager _menuManager;
 
     public override bool IsActive => _upgradesMenu.activeInHierarchy;
@@ -19,18 +18,16 @@ public class UpgradesMenu : BaseMenu
 
     private void Start()
     {
-        BalanceUpgradeVisualElement upgradeUI = Instantiate(_balanceUpgradeVisualElement, _upgradesContent);
-        upgradeUI.Init(this, _playerBalance);
+        foreach (var upgrade in _upgrades)
+        {
+            UpgradeVisualElement upgradeUI = Instantiate(upgrade.VisualElement, _upgradesContent);
+            upgradeUI.Init(this, upgrade);
+        }
     }
 
-    public bool TryUpgrade(PlayerBalanceUpgrade playerBalanceUpgrade)
+    public void TryUpgrade(BaseUpgrade baseUpgrade)
     {
-        if (_playerBalance.EXP < playerBalanceUpgrade.EXPCost)
-            return false;
-
-        _playerBalance.ReduceEXP(playerBalanceUpgrade.EXPCost);
-        _playerBalance.MultiplyGeneratorEfficiency(playerBalanceUpgrade.Multiplier);
-        return true;
+        baseUpgrade.Accept(_upgradesVisitor);
     }
 
     public override void Disable()
