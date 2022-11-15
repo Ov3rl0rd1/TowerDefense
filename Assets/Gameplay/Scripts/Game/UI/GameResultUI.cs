@@ -24,14 +24,13 @@ public class GameResultUI : MonoBehaviour
 
         if (winnerTeam == _team)
             _gameResultText.color = _winTextColor;
-        else
+        else if(winnerTeam != Team.None)
             _gameResultText.color = _loseTextColor;
+        else
+            _gameResultText.color = _drawTextColor;
 
         if (winnerTeam == Team.None)
-        {
-            _gameResultText.color = _drawTextColor;
             _gameResultText.text = "Draw";
-        }
         else
             _gameResultText.text = $"{winnerTeam} team won!";
     }

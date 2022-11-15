@@ -16,6 +16,7 @@ public class GameStateSwitcher : NetworkBehaviour
     [SerializeField] private Gates _player1Gates;
     [SerializeField] private Gates _player2Gates;
 
+    [Inject] private GameNetworking _gameNetworking;
     [Inject] private PlayerBalance _playerBalance;
 
     private bool _isGameFinished;
@@ -36,16 +37,13 @@ public class GameStateSwitcher : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (_currentState.Timer(Time.fixedDeltaTime) <= 0)
-        {
-            if (IsHost)
-            {
-                if (CurrentGameState.Value + 1 == _states.Count)
-                    EndGameServerRpc();
-                else
-                    SetState(CurrentGameState.Value + 1);
-            }
-        }
+        if (_currentState.Timer(Time.fixedDeltaTime) > 0 || IsHost == false)
+            return;
+
+        if (CurrentGameState.Value + 1 == _states.Count)
+            EndGameServerRpc();
+        else
+            SetState(CurrentGameState.Value + 1);
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -53,7 +51,6 @@ public class GameStateSwitcher : NetworkBehaviour
     {
         if (_isGameFinished)
             return;
-
 
         SetState(_states.Count - 1);
         _currentState.OnTimerEnd.AddListener(ReturnToLobby);
@@ -82,11 +79,14 @@ public class GameStateSwitcher : NetworkBehaviour
         if (IsHost)
             NetworkManager.DisconnectClient(NetworkManager.ConnectedClientsIds.First(x => x != NetworkManager.LocalClientId));
 
-        GameNetworking.StopGame();
+        _gameNetworking.StopGame();
     }
 
     private void SetState(int index)
     {
+        if (index >= _states.Count)
+            throw new System.ArgumentOutOfRangeException(nameof(index));
+
         if(IsHost)
             CurrentGameState.Value = index;
 

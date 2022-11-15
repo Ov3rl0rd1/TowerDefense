@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +23,6 @@ public class Units : ScriptableObject
     {
         public Unit Unit;
         public bool IsLocked;
-        [ConditionalHide(nameof(IsLocked))] public int EXPCost;
+        [HideIf(nameof(IsLocked))] public int EXPCost;
     }
 }

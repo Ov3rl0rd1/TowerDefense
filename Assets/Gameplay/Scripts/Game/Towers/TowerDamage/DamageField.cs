@@ -1,15 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using Unity.Netcode;
+using NaughtyAttributes;
 
 public class DamageField : NetworkBehaviour
 {
     private enum OverlapType { Box, Sphere }
 
     [SerializeField] private OverlapType _overlapType;
-    [SerializeField, ConditionalHide(nameof(_overlapType), 1)] private float _radius;
-    [SerializeField, ConditionalHide(nameof(_overlapType), 0)] private Vector3 _center;
-    [SerializeField, ConditionalHide(nameof(_overlapType), 0)] private Vector3 _size;
+    [SerializeField, HideIf(nameof(_overlapType), 1)] private float _radius;
+    [SerializeField, HideIf(nameof(_overlapType), 0)] private Vector3 _center;
+    [SerializeField, HideIf(nameof(_overlapType), 0)] private Vector3 _size;
     [SerializeField] private ParticleSystem _particleSystem;
 
     private int _duration;

@@ -11,9 +11,6 @@ public class UnitsSendMenu : BaseMenu
     public int MaxUnitsCount => _unitsSpawner.MaxUnitsCount;
     public int SelectedUnitsCount => _selectedUnitsId.Select(x => x.Value).Sum();
 
-    public override bool IsActive => _sendMenu.activeSelf;
-
-    [SerializeField] private GameObject _sendMenu;
     [SerializeField] private Button _sendButton;
     [SerializeField] private TextMeshProUGUI _sendButtonText;
     [SerializeField] private Transform _unitsContent;
@@ -24,7 +21,6 @@ public class UnitsSendMenu : BaseMenu
     [Inject] private UnitSpawner _unitsSpawner;
     [Inject] private Units _unitsData;
     [Inject] private PlayerBalance _playerBalance;
-    [Inject] private MenuManager _menuManager;
 
     private Dictionary<Units.Data, int> _selectedUnitsId = new Dictionary<Units.Data, int>();
     private string _defaultSendText;
@@ -73,17 +69,6 @@ public class UnitsSendMenu : BaseMenu
 
         _playerBalance.ReduceEXP(unit.EXPCost);
         return true;
-    }
-
-    public override void Enable()
-    {
-        if (_menuManager.IsInMenu == false)
-            _sendMenu.SetActive(true);
-    }
-
-    public override void Disable()
-    {
-        _sendMenu.SetActive(false);
     }
 
     public void Add(Units.Data unit)

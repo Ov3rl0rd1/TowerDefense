@@ -2,25 +2,34 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Netcode;
 using System.Linq;
+using NaughtyAttributes;
 
 public class GameNetworking : MonoBehaviour
 {
-    private const string _setupScene = "Setup";
-    private const string _gameScene = "Game";
-    private const string _menuScene = "Menu";
+    [SerializeField] private NetworkManager _debugNetworkManager;
+    [SerializeField] private NetworkManager _buildNetworkManager;
 
-    private static bool _isInGame;
+    [Scene, SerializeField] private string _setupScene;
+    [Scene, SerializeField] private string _gameScene;
+    [Scene, SerializeField] private string _menuScene;
+
+    private bool _isInGame;
 
     private void Awake()
     {
         if (SceneManager.GetActiveScene().name != _setupScene)
             return;
 
+        if (Application.isEditor)
+            _debugNetworkManager.gameObject.SetActive(true);
+        else
+            _buildNetworkManager.gameObject.SetActive(true);
+
         SceneManager.LoadScene(_menuScene);
         DontDestroyOnLoad(gameObject);
     }
 
-    public static void StartHost()
+    public void StartHost()
     {
         if (_isInGame)
             throw new System.InvalidOperationException("Player is already in the game");
@@ -32,7 +41,7 @@ public class GameNetworking : MonoBehaviour
         _isInGame = true;
     }
 
-    public static void StartClient()
+    public void StartClient()
     {
         if (_isInGame)
             throw new System.InvalidOperationException("Player is already in the game");
@@ -43,7 +52,7 @@ public class GameNetworking : MonoBehaviour
         _isInGame = true;
     }
 
-    public static void StopGame()
+    public void StopGame()
     {
         if (_isInGame == false)
             throw new System.InvalidOperationException("Player isn't in the game");
@@ -54,7 +63,7 @@ public class GameNetworking : MonoBehaviour
         SceneManager.LoadScene(_setupScene);
     }
 
-    private static void OnSecondPlayerConnected()
+    private void OnSecondPlayerConnected()
     {
         NetworkManager.Singleton.SceneManager.LoadScene(_gameScene, LoadSceneMode.Single);
     }

@@ -935,10 +935,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd69b4506c2e4264f8179006d33e6e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuObject: {fileID: 694196699}
   OnBuyTower:
     m_PersistentCalls:
       m_Calls: []
-  _buyMenu: {fileID: 694196699}
   _towersContent: {fileID: 833087248}
   _towerPrefab: {fileID: 6869628730327094082, guid: 075b724684c4dec4d9028641db72dc2a, type: 3}
 --- !u!1 &132284812
@@ -4442,12 +4442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3928802704ae0ee4fb2a2ec348b0e785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuObject: {fileID: 1661478548}
   _upgradesVisitor: {fileID: 1327639102}
   _upgrades:
   - {fileID: 11400000, guid: be1c234b9a17c0b4fbc35d13d86e147e, type: 2}
   - {fileID: 11400000, guid: 82bbd19088941da468a9c0deefcd4620, type: 2}
   - {fileID: 11400000, guid: c1352eefed6f8ea4da02d706de2f513c, type: 2}
-  _upgradesMenu: {fileID: 1661478548}
   _upgradesContent: {fileID: 359832512}
 --- !u!1001 &518739064
 PrefabInstance:
@@ -7078,13 +7078,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -7096,7 +7096,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -7368,7 +7368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbce6b9ce41a4545be3c2596616eb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sendMenu: {fileID: 1937489747}
+  _menuObject: {fileID: 1937489747}
   _sendButton: {fileID: 1884765655}
   _sendButtonText: {fileID: 764596635}
   _unitsContent: {fileID: 1096544961}
@@ -9513,7 +9513,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
@@ -9568,7 +9568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1442132321, guid: 0531d2a10eabc4544866e615765576dd, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9577,7 +9577,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.2
 --- !u!222 &1047774338
 CanvasRenderer:
   m_ObjectHideFlags: 0

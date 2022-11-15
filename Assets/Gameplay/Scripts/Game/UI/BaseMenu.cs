@@ -1,9 +1,22 @@
 using UnityEngine;
+using Zenject;
 
 public abstract class BaseMenu : MonoBehaviour
 {
-    public abstract bool IsActive { get; }
+    [SerializeField] private GameObject _menuObject;
 
-    public abstract void Enable();
-    public abstract void Disable();
+    [Inject] private MenuManager _menuManager;
+
+    public bool IsActive => _menuObject.activeSelf;
+
+    public void Enable()
+    {
+        if (_menuManager.IsInMenu == false)
+            _menuObject.SetActive(true);
+    }
+
+    public void Disable()
+    {
+        _menuObject.SetActive(false);
+    }
 }
